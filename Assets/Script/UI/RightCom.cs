@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightCom : BaseUI
+public class RightCom : CompUI
 {
-    public RightCom() : base()
+    public RightCom(GameObject _parentRoot) : base(_parentRoot)
     {
-
+       
     }
 
     public override void OnInit()
     {
-       // throw new System.NotImplementedException();
+
+        Debug.Log("RightCom OnInit######");
+    }
+
+    public override void OnShow()
+    {
+        Debug.Log("RightCom OnShow######");
     }
 
     protected override string srcPath()
     {
-        return "";
+        return "Prefab/RightCom";
     }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        Debug.Log("RightCom Destroy############");
+    }
+
 }

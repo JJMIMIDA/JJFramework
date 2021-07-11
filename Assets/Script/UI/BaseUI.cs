@@ -15,6 +15,8 @@ public abstract class BaseUI
 
     GameObject parentRoot;
 
+    List<BaseUI> mbaseUIs = new List<BaseUI>();
+
     /// <summary>
     /// UI资源的加载器
     /// </summary>
@@ -28,16 +30,25 @@ public abstract class BaseUI
       
     }
 
+    public BaseUI(IUILoader _loader, GameObject _parentRoot)
+    {
+        Init(_loader, _parentRoot);
+    }
+
     public GameObject Init(IUILoader _loader, GameObject _parentRoot)
     {
+      
         this.parentRoot = _parentRoot;
         loader = _loader;
         this.root = loader.LoadSyncUI(this.srcPath()); //Resource.Load();
+        root.transform.SetParent(_parentRoot.transform, false);
         return this.root;
     }
 
     protected void AddUI(BaseUI baseui)
     {
+
+        mbaseUIs.Add(baseui);
 
     }
 
@@ -49,19 +60,28 @@ public abstract class BaseUI
     public abstract void OnInit();
   
 
-    public void OnShow()
+    public virtual void OnShow()
     {
 
     }
 
-    public void OnHide()
+    public virtual void OnHide()
     {
 
     }
 
-    public void OnDestroy()
+    public virtual void OnDestroy()
     {
-
+        if(root!=null)
+        {
+            GameObject.DestroyImmediate(root);
+            root = null;
+        }
+        for(int index =0; index < mbaseUIs.Count;index++)
+        {
+            BaseUI baseUI = mbaseUIs[index];
+            baseUI.OnDestroy();
+        }
     }
 }
 
