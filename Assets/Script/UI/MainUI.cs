@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainUI : BaseUI
+public class MainUI : EntityUI
 {
 
     public MainUI():base()
@@ -16,7 +16,7 @@ public class MainUI : BaseUI
     /// <returns></returns>
     protected override string srcPath()
     {
-        return "Prefab/MainUI";
+        return "Prefab/Entity/MainUI";
     }
 
     /// <summary>
@@ -46,5 +46,9 @@ public class MainUI : BaseUI
         Debug.Log("MainUI Destroy############");
     }
 
-
+    public override EntityUICanvasType CanvasType()
+    {
+        //比如MainUI需要一个三层canvas:
+        return EntityUICanvasType.bg | EntityUICanvasType.center | EntityUICanvasType.top;
+    }
 }

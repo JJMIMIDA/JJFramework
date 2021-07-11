@@ -11,7 +11,8 @@ public class RightCom : CompUI
 
     public override void OnInit()
     {
-
+        Transform room1 = root.gameObject.transform.Find("Room_1");
+        //room1.transform.Find("Button_1 Gray").GetComponent<>;
         Debug.Log("RightCom OnInit######");
     }
 
@@ -22,7 +23,7 @@ public class RightCom : CompUI
 
     protected override string srcPath()
     {
-        return "Prefab/RightCom";
+        return "Prefab/Entity/RightCom";
     }
 
     public override void OnDestroy()

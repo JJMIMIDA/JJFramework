@@ -8,8 +8,8 @@ public class TestCase : MonoBehaviour
     void Start()
     {
         UIManager.Instance.OpenUI<MainUI>();
-        //UIManager.Instance.OpenUI<PopUI>();
-        UIManager.Instance.CloseUI<MainUI>();
+        UIManager.Instance.OpenUI<PopUI>();
+       // UIManager.Instance.CloseUI<MainUI>();
     }
 
     // Update is called once per frame

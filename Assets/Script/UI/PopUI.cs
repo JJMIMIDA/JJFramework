@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopUI : BaseUI
+public class PopUI : EntityUI
 {
     public PopUI() : base()
     {
 
+    }
+
+    public override EntityUICanvasType CanvasType()
+    {
+        return EntityUICanvasType.top;
     }
 
     public override void OnInit()
@@ -16,6 +21,6 @@ public class PopUI : BaseUI
 
     protected override string srcPath()
     {
-        return "Prefab/PopUI";
+        return "Prefab/Entity/PopUI";
     }
 }

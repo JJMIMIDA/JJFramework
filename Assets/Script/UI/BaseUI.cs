@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public abstract class BaseUI
 {
+
+  
     /// <summary>
     /// ui根节点,在打开UI的时候，绑定root界面
     /// </summary>
@@ -23,6 +25,10 @@ public abstract class BaseUI
     IUILoader loader;
 
 
+    /// <summary>
+    /// TODO：垃圾定义，每次挪文件夹都需要修改
+    /// </summary>
+    /// <returns></returns>
     protected abstract string srcPath();
 
     public BaseUI()
@@ -37,7 +43,6 @@ public abstract class BaseUI
 
     public GameObject Init(IUILoader _loader, GameObject _parentRoot)
     {
-      
         this.parentRoot = _parentRoot;
         loader = _loader;
         this.root = loader.LoadSyncUI(this.srcPath()); //Resource.Load();
